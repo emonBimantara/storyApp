@@ -133,7 +133,12 @@ self.addEventListener('push', function(event) {
     data = event.data.json();
     console.log('[Service Worker] Push data:', data);
   } catch (e) {
-    data = { message: event.data.text() };
+    data = { 
+      title: 'Story App Notification',
+      options: {
+        body: event.data.text() || 'Ada cerita baru!'
+      }
+    };
     console.log('[Service Worker] Push data (text):', data);
   }
 
@@ -167,19 +172,13 @@ self.addEventListener('push', function(event) {
   console.log('[Service Worker] Showing notification with options:', options);
 
   event.waitUntil(
-    new Promise((resolve) => {
-      setTimeout(() => {
-        self.registration.showNotification(data.title || 'Story App Notification', options)
-          .then(() => {
-            console.log('[Service Worker] Notification shown successfully');
-            resolve();
-          })
-          .catch((error) => {
-            console.error('[Service Worker] Error showing notification:', error);
-            resolve();
-          });
-      }, 1000);
-    })
+    self.registration.showNotification(data.title || 'Story App Notification', options)
+      .then(() => {
+        console.log('[Service Worker] Notification shown successfully');
+      })
+      .catch((error) => {
+        console.error('[Service Worker] Error showing notification:', error);
+      })
   );
 });
 
