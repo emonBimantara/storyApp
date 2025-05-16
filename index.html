@@ -8,21 +8,31 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <meta name="apple-mobile-web-app-title" content="Story App" />
+
+  <!-- Path dasar disesuaikan agar cocok untuk GitHub Pages -->
+  <base href="/storyApp/">
+
   <title>Submission Proyek Kedua</title>
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="apple-touch-icon" href="/icons/D-192p.png" />
+
+  <!-- Path relatif -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/D-192p.png" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="styles/main.css">
 <script defer src="/storyApp/bundle.js"></script></head>
 <body>
-    <a href="#main-content" class="skip-to-content">Skip to content</a>
-    <nav>
-        <a href="#/">Beranda</a> |
-        <a href="#/add">Tambah Cerita</a> |
-        <a href="#/saved">Cerita Tersimpan</a>
-    </nav>
-    <main id="main-content" tabindex="-1"></main>
-    <script src="/src/utils/offlineHandler.js"></script>
-    <script src="/app.js" type="module"></script>
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <nav>
+    <a href="#/">Beranda</a> |
+    <a href="#/add">Tambah Cerita</a> |
+    <a href="#/saved">Cerita Tersimpan</a>
+  </nav>
+
+  <main id="main-content" tabindex="-1"></main>
+
+  <!-- Path relatif -->
+  <script src="src/utils/offlineHandler.js"></script>
+  <script src="app.js" type="module"></script>
 </body>
 </html>

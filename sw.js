@@ -83,7 +83,7 @@ self.addEventListener('fetch', (event) => {
           })
           .catch(() => {
             if (event.request.destination === 'image') {
-              return caches.match('/storyApp/icons/icon-192x192.png');
+              return caches.match('/storyApp/icons/D-192p.png');
             }
 
             return new Response(
@@ -139,7 +139,7 @@ self.addEventListener('push', function(event) {
 
   const options = {
     body: data.options?.body || 'Ada cerita baru!',
-    icon: '/storyApp/icons/icon-192x192.png',
+    icon: '/storyApp/icons/D-192p.png',
     badge: '/storyApp/icons/badge-72x72.png',
     vibrate: [100, 50, 100],
     requireInteraction: true,
