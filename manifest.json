@@ -2,7 +2,7 @@
   "name": "Submission Proyek Awal",
   "short_name": "Proyek Awal",
   "description": "Aplikasi web untuk berbagi cerita",
-  "start_url": "./",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
@@ -14,7 +14,7 @@
       "purpose": "any maskable"
     },
     {
-      "src": "icons/D-512p.png",
+      "src": "icons/D-192p.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
