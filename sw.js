@@ -46,8 +46,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      caches.match('/index.html').then((response) => {
-        return response || fetch('/index.html');
+      caches.match('/storyApp/index.html').then((response) => {
+        return response || fetch('/storyApp/index.html');
       })
     );
     return;
@@ -83,7 +83,7 @@ self.addEventListener('fetch', (event) => {
           })
           .catch(() => {
             if (event.request.destination === 'image') {
-              return caches.match('/icons/icon-192x192.png');
+              return caches.match('/storyApp/icons/D-192p.png');
             }
 
             return new Response(
@@ -139,8 +139,8 @@ self.addEventListener('push', function(event) {
 
   const options = {
     body: data.options?.body || 'Ada cerita baru!',
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/badge-72x72.png',
+    icon: '/storyApp/icons/D-192p.png',
+    badge: '/storyApp/icons/badge-72x72.png',
     vibrate: [100, 50, 100],
     requireInteraction: true,
     tag: 'story-notification',
@@ -148,18 +148,18 @@ self.addEventListener('push', function(event) {
     data: {
       dateOfArrival: Date.now(),
       primaryKey: 1,
-      url: data.url || '/'
+      url: data.url || '/storyApp/'
     },
     actions: [
       {
         action: 'explore',
         title: 'Lihat Detail',
-        icon: '/icons/checkmark.png'
+        icon: '/storyApp/icons/checkmark.png'
       },
       {
         action: 'close',
         title: 'Tutup',
-        icon: '/icons/xmark.png'
+        icon: '/storyApp/icons/xmark.png'
       },
     ]
   };
