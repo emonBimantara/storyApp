@@ -1,18 +1,18 @@
 const CACHE_NAME = 'story-app-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/styles/main.css',
-  '/styles/transitions.css',
-  '/app.js',
-  '/routes.js',
-  '/src/utils/offlineHandler.js',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
-  '/icons/icon-512x512.png',
-  '/icons/badge-72x72.png',
-  '/icons/checkmark.png',
-  '/icons/xmark.png',
+  '/storyApp/',
+  '/storyApp/index.html',
+  '/storyApp/styles/main.css',
+  '/storyApp/styles/transitions.css',
+  '/storyApp/app.js',
+  '/storyApp/routes.js',
+  '/storyApp/src/utils/offlineHandler.js',
+  '/storyApp/manifest.json',
+  '/storyApp/icons/icon-192x192.png',
+  '/storyApp/icons/icon-512x512.png',
+  '/storyApp/icons/badge-72x72.png',
+  '/storyApp/icons/checkmark.png',
+  '/storyApp/icons/xmark.png',
   'https://unpkg.com/leaflet/dist/leaflet.css',
   'https://unpkg.com/leaflet/dist/leaflet.js'
 ];
@@ -46,8 +46,8 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      caches.match('/index.html').then((response) => {
-        return response || fetch('/index.html');
+      caches.match('/storyApp/index.html').then((response) => {
+        return response || fetch('/storyApp/index.html');
       })
     );
     return;
@@ -83,7 +83,7 @@ self.addEventListener('fetch', (event) => {
           })
           .catch(() => {
             if (event.request.destination === 'image') {
-              return caches.match('/icons/icon-192x192.png');
+              return caches.match('/storyApp/icons/icon-192x192.png');
             }
 
             return new Response(
@@ -139,8 +139,8 @@ self.addEventListener('push', function(event) {
 
   const options = {
     body: data.options?.body || 'Ada cerita baru!',
-    icon: '/icons/icon-192x192.png',
-    badge: '/icons/badge-72x72.png',
+    icon: '/storyApp/icons/icon-192x192.png',
+    badge: '/storyApp/icons/badge-72x72.png',
     vibrate: [100, 50, 100],
     requireInteraction: true,
     tag: 'story-notification',
@@ -148,18 +148,18 @@ self.addEventListener('push', function(event) {
     data: {
       dateOfArrival: Date.now(),
       primaryKey: 1,
-      url: data.url || '/'
+      url: data.url || '/storyApp/'
     },
     actions: [
       {
         action: 'explore',
         title: 'Lihat Detail',
-        icon: '/icons/checkmark.png'
+        icon: '/storyApp/icons/checkmark.png'
       },
       {
         action: 'close',
         title: 'Tutup',
-        icon: '/icons/xmark.png'
+        icon: '/storyApp/icons/xmark.png'
       },
     ]
   };
