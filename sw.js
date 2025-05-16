@@ -133,6 +133,7 @@ self.addEventListener('push', function(event) {
     data = event.data.json();
     console.log('[Service Worker] Push data:', data);
   } catch (e) {
+    console.error('[Service Worker] Error parsing push data:', e);
     data = { 
       title: 'Story App Notification',
       options: {
@@ -169,15 +170,15 @@ self.addEventListener('push', function(event) {
     ]
   };
 
-  console.log('[Service Worker] Showing notification with options:', options);
+  console.log('[Service Worker] Menampilkan notifikasi dengan options:', options);
 
   event.waitUntil(
     self.registration.showNotification(data.title || 'Story App Notification', options)
       .then(() => {
-        console.log('[Service Worker] Notification shown successfully');
+        console.log('[Service Worker] Notifikasi berhasil ditampilkan');
       })
       .catch((error) => {
-        console.error('[Service Worker] Error showing notification:', error);
+        console.error('[Service Worker] Error saat menampilkan notifikasi:', error);
       })
   );
 });
